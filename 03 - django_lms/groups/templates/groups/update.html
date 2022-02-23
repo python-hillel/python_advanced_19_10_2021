@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update group
+{% endblock %}
+
+{% block header %}
+    Update group
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-success mt-3" type="submit">Update</button>
+        <a class="btn btn-primary mt-3" href="{% url 'groups:list' %}">Cancel</a>
+    </form>
+{#    <table class="table table-hover table-sm">#}
+{#        <tr>#}
+{#            <th></th>#}
+{#            <th>First name</th>#}
+{#            <th>Last name</th>#}
+{#            <th>Age</th>#}
+{#            <th>Phone</th>#}
+{#            <th><i class="bi bi-pencil"></i></th>#}
+{#            <th><i class="bi bi-trash"></i></th>#}
+{#        </tr>#}
+{#        {% for student in group.students.all %}#}
+{#            <tr>#}
+{#                <td>{{ forloop.counter }}</td>#}
+{#                <td>{{ student.first_name }}</td>#}
+{#                <td>{{ student.last_name }}</td>#}
+{#                <td>{{ student.age }}</td>#}
+{#                <td>{% if student.phone_number is not None %}#}
+{#                    {{ student.phone_number }}#}
+{#                {% endif %}</td>#}
+{#                <td><a href="{% url 'students:update' student.id %}">Edit</a></td>#}
+{#                <td><a href="{% url 'students:delete' student.id %}">Remove</a></td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    {% with list_object=group.students.all  %}#}
+    {% with list_object=students  %}
+        {% include 'includes/students_list_table.html' %}
+    {% endwith %}
+{% endblock %}

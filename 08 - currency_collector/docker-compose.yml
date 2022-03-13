@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres
+    container_name: currency_collector_db
+    volumes:
+      - currency_collector_db_volume:/var/lib/postgresql/data/
+    ports:
+      - "5439:5432"
+    env_file:
+      - .env
+
+volumes:
+  currency_collector_db_volume:
+    name: currency_collector_db_data
